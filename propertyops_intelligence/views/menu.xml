@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="poi_menu_root"
+              name="PropertyOps Intelligence"
+              web_icon="propertyops_intelligence,static/description/icon.png"
+              sequence="20"/>
+
+    <!-- Properties -->
+    <menuitem id="poi_menu_properties"
+              name="Properties"
+              parent="poi_menu_root"
+              sequence="10"
+              action="poi_property_action"/>
+
+    <!-- Units -->
+    <menuitem id="poi_menu_units"
+              name="Units"
+              parent="poi_menu_root"
+              sequence="20"
+              action="poi_unit_action"/>
+
+    <!-- Tenants -->
+    <menuitem id="poi_menu_tenants"
+              name="Tenants"
+              parent="poi_menu_root"
+              sequence="30"
+              action="poi_tenant_action"/>
+
+    <!-- Leases -->
+    <menuitem id="poi_menu_leases"
+              name="Leases"
+              parent="poi_menu_root"
+              sequence="40"
+              action="poi_lease_action"/>
+
+    <!-- Rent Schedule -->
+    <menuitem id="poi_menu_rent_schedule"
+              name="Rent Schedule"
+              parent="poi_menu_root"
+              sequence="50"
+              action="poi_rent_schedule_action"/>
+
+    <!-- Maintenance Requests -->
+    <menuitem id="poi_menu_maintenance"
+              name="Maintenance Requests"
+              parent="poi_menu_root"
+              sequence="60"
+              action="poi_maintenance_request_action"/>
+
+    <!-- Vendor Compliance -->
+    <menuitem id="poi_menu_vendor_compliance"
+              name="Vendor Compliance"
+              parent="poi_menu_root"
+              sequence="70"
+              action="poi_vendor_compliance_action"/>
+
+    <!-- Move In/Out -->
+    <menuitem id="poi_menu_move_in_out"
+              name="Move In/Out"
+              parent="poi_menu_root"
+              sequence="80"
+              action="poi_move_in_out_action"/>
+</odoo>

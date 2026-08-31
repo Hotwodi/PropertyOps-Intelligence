@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_poi_property_user,poi.property.user,model_poi_property,base.group_user,1,1,1,1
+access_poi_unit_user,poi.unit.user,model_poi_unit,base.group_user,1,1,1,1
+access_poi_tenant_user,poi.tenant.user,model_poi_tenant,base.group_user,1,1,1,1
+access_poi_lease_user,poi.lease.user,model_poi_lease,base.group_user,1,1,1,1
+access_poi_rent_schedule_user,poi.rent.schedule.user,model_poi_rent_schedule,base.group_user,1,1,1,1
+access_poi_maintenance_request_user,poi.maintenance.request.user,model_poi_maintenance_request,base.group_user,1,1,1,1
+access_poi_vendor_compliance_user,poi.vendor.compliance.user,model_poi_vendor_compliance,base.group_user,1,1,1,1
+access_poi_move_in_out_user,poi.move.in.out.user,model_poi_move_in_out,base.group_user,1,1,1,1

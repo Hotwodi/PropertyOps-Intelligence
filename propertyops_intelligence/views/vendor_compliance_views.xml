@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="poi_vendor_compliance_view_tree" model="ir.ui.view">
+        <field name="name">poi.vendor.compliance.view.tree</field>
+        <field name="model">poi.vendor.compliance</field>
+        <field name="arch" type="xml">
+            <tree string="Vendor Compliance" decoration-success="state=='compliant'" decoration-warning="state=='expiring'" decoration-danger="state=='expired'">
+                <field name="name"/>
+                <field name="vendor_id"/>
+                <field name="property_id"/>
+                <field name="insurance_type"/>
+                <field name="policy_number"/>
+                <field name="coverage_amount" sum="Total Coverage"/>
+                <field name="expiry_date"/>
+                <field name="compliance_score" widget="percentage"/>
+                <field name="state" widget="badge" decoration-success="state=='compliant'" decoration-warning="state=='expiring'" decoration-danger="state=='expired'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="poi_vendor_compliance_view_form" model="ir.ui.view">
+        <field name="name">poi.vendor.compliance.view.form</field>
+        <field name="model">poi.vendor.compliance</field>
+        <field name="arch" type="xml">
+            <form string="Vendor Compliance">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Reference"/>
+                        <h1><field name="name" placeholder="e.g. GL Insurance 2025"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="vendor_id"/>
+                            <field name="property_id"/>
+                            <field name="insurance_type"/>
+                            <field name="policy_number"/>
+                        </group>
+                        <group>
+                            <field name="coverage_amount"/>
+                            <field name="expiry_date"/>
+                            <field name="compliance_score" widget="percentage"/>
+                            <field name="state" widget="radio"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="poi_vendor_compliance_action" model="ir.actions.act_window">
+        <field name="name">Vendor Compliance</field>
+        <field name="res_model">poi.vendor.compliance</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a vendor compliance record
+            </p>
+            <p>
+                Track vendor insurance policies, coverage amounts and compliance scoring across your portfolio.
+            </p>
+        </field>
+    </record>
+</odoo>

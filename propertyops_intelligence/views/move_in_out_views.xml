@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="poi_move_in_out_view_tree" model="ir.ui.view">
+        <field name="name">poi.move.in.out.view.tree</field>
+        <field name="model">poi.move.in.out</field>
+        <field name="arch" type="xml">
+            <tree string="Move In / Move Out" decoration-info="type=='move_in'" decoration-muted="type=='move_out'">
+                <field name="name"/>
+                <field name="type" widget="badge" decoration-info="type=='move_in'" decoration-muted="type=='move_out'"/>
+                <field name="tenant_id"/>
+                <field name="unit_id"/>
+                <field name="scheduled_date"/>
+                <field name="completed_date"/>
+                <field name="deposit_held" sum="Total Deposit Held"/>
+                <field name="deposit_returned" sum="Total Deposit Returned"/>
+                <field name="deductions" sum="Total Deductions"/>
+                <field name="unit_readiness" widget="badge" decoration-success="unit_readiness=='ready'" decoration-warning="unit_readiness=='in_progress'" decoration-danger="unit_readiness=='not_ready'"/>
+                <field name="vacancy_days"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="poi_move_in_out_view_form" model="ir.ui.view">
+        <field name="name">poi.move.in.out.view.form</field>
+        <field name="model">poi.move.in.out</field>
+        <field name="arch" type="xml">
+            <form string="Move In / Move Out">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Reference"/>
+                        <h1><field name="name" placeholder="e.g. Move In - Jan 2025"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type" widget="radio"/>
+                            <field name="lease_id"/>
+                            <field name="tenant_id"/>
+                            <field name="unit_id"/>
+                        </group>
+                        <group>
+                            <field name="scheduled_date"/>
+                            <field name="completed_date"/>
+                            <field name="unit_readiness" widget="radio"/>
+                            <field name="vacancy_days"/>
+                        </group>
+                    </group>
+                    <group string="Deposit">
+                        <group>
+                            <field name="deposit_held"/>
+                            <field name="deposit_returned"/>
+                            <field name="deductions"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Inspection Checklist">
+                            <field name="inspection_checklist" placeholder="Record inspection findings, photos references and condition notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="poi_move_in_out_action" model="ir.actions.act_window">
+        <field name="name">Move In/Out</field>
+        <field name="res_model">poi.move.in.out</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a move in/out record
+            </p>
+            <p>
+                Track move-in and move-out inspections, deposits, deductions and unit readiness.
+            </p>
+        </field>
+    </record>
+</odoo>

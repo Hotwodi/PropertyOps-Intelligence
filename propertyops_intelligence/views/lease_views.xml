@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="poi_lease_view_tree" model="ir.ui.view">
+        <field name="name">poi.lease.view.tree</field>
+        <field name="model">poi.lease</field>
+        <field name="arch" type="xml">
+            <tree string="Leases" decoration-success="status=='active'" decoration-danger="status=='terminated'" decoration-muted="status=='expired'">
+                <field name="lease_number"/>
+                <field name="name"/>
+                <field name="property_id"/>
+                <field name="unit_id"/>
+                <field name="tenant_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="base_rent" sum="Total Base Rent"/>
+                <field name="rent_frequency"/>
+                <field name="status" widget="badge" decoration-success="status=='active'" decoration-info="status=='renewed'" decoration-danger="status=='terminated'" decoration-warning="status=='expired'" decoration-muted="status=='draft'"/>
+                <field name="ai_renewal_probability" widget="percentage" decoration-success="ai_renewal_probability &gt;= 70" decoration-danger="ai_renewal_probability &lt; 40"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="poi_lease_view_form" model="ir.ui.view">
+        <field name="name">poi.lease.view.form</field>
+        <field name="model">poi.lease</field>
+        <field name="arch" type="xml">
+            <form string="Lease">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Lease Name"/>
+                        <h1><field name="name" placeholder="e.g. 2024 Office Lease"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="lease_number"/>
+                            <field name="property_id"/>
+                            <field name="unit_id"/>
+                            <field name="tenant_id"/>
+                            <field name="status" widget="radio"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="rent_frequency"/>
+                            <field name="base_rent"/>
+                            <field name="deposit_amount"/>
+                            <field name="cam_charges"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Escalation &amp; Renewal">
+                            <group>
+                                <group>
+                                    <field name="escalation_type"/>
+                                    <field name="escalation_rate" widget="percentage"/>
+                                    <field name="next_escalation_date"/>
+                                </group>
+                                <group>
+                                    <field name="renewal_option"/>
+                                    <field name="renewal_notice_days" invisible="not renewal_option"/>
+                                    <field name="ai_renewal_probability" widget="percentage"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Rent Schedule">
+                            <field name="rent_schedule_ids">
+                                <tree editable="bottom">
+                                    <field name="due_date"/>
+                                    <field name="amount"/>
+                                    <field name="cam_amount"/>
+                                    <field name="total_due"/>
+                                    <field name="paid_date"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="days_late"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="poi_lease_action" model="ir.actions.act_window">
+        <field name="name">Leases</field>
+        <field name="res_model">poi.lease</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new lease
+            </p>
+            <p>
+                Leases bind tenants to units with rent terms, escalations, renewals and CAM charges.
+            </p>
+        </field>
+    </record>
+</odoo>

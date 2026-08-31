@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="poi_rent_schedule_view_tree" model="ir.ui.view">
+        <field name="name">poi.rent.schedule.view.tree</field>
+        <field name="model">poi.rent.schedule</field>
+        <field name="arch" type="xml">
+            <tree string="Rent Schedule" decoration-success="state=='paid'" decoration-danger="state=='overdue'" decoration-warning="state=='partial'">
+                <field name="name"/>
+                <field name="lease_id"/>
+                <field name="due_date"/>
+                <field name="amount" sum="Total Amount"/>
+                <field name="cam_amount" sum="Total CAM"/>
+                <field name="total_due" sum="Total Due"/>
+                <field name="paid_date"/>
+                <field name="state" widget="badge" decoration-success="state=='paid'" decoration-danger="state=='overdue'" decoration-warning="state=='partial'" decoration-info="state=='due'" decoration-muted="state=='scheduled'"/>
+                <field name="days_late" decoration-danger="days_late &gt; 0"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="poi_rent_schedule_view_form" model="ir.ui.view">
+        <field name="name">poi.rent.schedule.view.form</field>
+        <field name="model">poi.rent.schedule</field>
+        <field name="arch" type="xml">
+            <form string="Rent Schedule Entry">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Reference"/>
+                        <h1><field name="name" placeholder="e.g. Jan 2025 Rent"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="lease_id"/>
+                            <field name="due_date"/>
+                            <field name="paid_date"/>
+                            <field name="state" widget="radio"/>
+                        </group>
+                        <group>
+                            <field name="amount"/>
+                            <field name="cam_amount"/>
+                            <field name="total_due"/>
+                            <field name="days_late"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="poi_rent_schedule_action" model="ir.actions.act_window">
+        <field name="name">Rent Schedule</field>
+        <field name="res_model">poi.rent.schedule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a rent schedule entry
+            </p>
+            <p>
+                Rent schedule entries track each billing period for a lease, including CAM and overdue status.
+            </p>
+        </field>
+    </record>
+</odoo>

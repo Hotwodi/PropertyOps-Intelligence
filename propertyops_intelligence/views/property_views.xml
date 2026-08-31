@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="poi_property_view_tree" model="ir.ui.view">
+        <field name="name">poi.property.view.tree</field>
+        <field name="model">poi.property</field>
+        <field name="arch" type="xml">
+            <tree string="Properties">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="property_type"/>
+                <field name="city"/>
+                <field name="state"/>
+                <field name="total_units"/>
+                <field name="total_sqft"/>
+                <field name="ai_occupancy_forecast" widget="percentage"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="poi_property_view_form" model="ir.ui.view">
+        <field name="name">poi.property.view.form</field>
+        <field name="model">poi.property</field>
+        <field name="arch" type="xml">
+            <form string="Property">
+                <header/>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name" string="Property Name"/>
+                        <h1><field name="name" placeholder="e.g. Riverside Plaza"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="property_type"/>
+                            <field name="owner_id"/>
+                            <field name="acquisition_date"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="total_units"/>
+                            <field name="total_sqft"/>
+                            <field name="ai_occupancy_forecast" widget="percentage"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Address">
+                            <group>
+                                <field name="address"/>
+                                <field name="city"/>
+                                <field name="state"/>
+                                <field name="zip"/>
+                            </group>
+                        </page>
+                        <page string="Units">
+                            <field name="unit_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="unit_number"/>
+                                    <field name="sqft"/>
+                                    <field name="monthly_rent"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="poi_property_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">poi.property</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new property
+            </p>
+            <p>
+                Manage your real estate portfolio by adding properties, units and ownership details.
+            </p>
+        </field>
+    </record>
+</odoo>
