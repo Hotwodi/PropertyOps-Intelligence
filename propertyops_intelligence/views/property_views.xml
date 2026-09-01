@@ -4,7 +4,7 @@
         <field name="name">poi.property.view.tree</field>
         <field name="model">poi.property</field>
         <field name="arch" type="xml">
-            <tree string="Properties">
+            <list string="Properties">
                 <field name="code"/>
                 <field name="name"/>
                 <field name="property_type"/>
@@ -14,7 +14,7 @@
                 <field name="total_sqft"/>
                 <field name="ai_occupancy_forecast" widget="percentage"/>
                 <field name="active" widget="boolean_toggle"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -55,13 +55,13 @@
                         </page>
                         <page string="Units">
                             <field name="unit_ids">
-                                <tree>
+                                <list>
                                     <field name="name"/>
                                     <field name="unit_number"/>
                                     <field name="sqft"/>
                                     <field name="monthly_rent"/>
                                     <field name="status"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
@@ -73,7 +73,7 @@
     <record id="poi_property_action" model="ir.actions.act_window">
         <field name="name">Properties</field>
         <field name="res_model">poi.property</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new property

@@ -4,7 +4,7 @@
         <field name="name">poi.maintenance.request.view.tree</field>
         <field name="model">poi.maintenance.request</field>
         <field name="arch" type="xml">
-            <tree string="Maintenance Requests" decoration-danger="priority=='emergency'" decoration-warning="priority=='high'">
+            <list string="Maintenance Requests" decoration-danger="priority=='emergency'" decoration-warning="priority=='high'">
                 <field name="name"/>
                 <field name="property_id"/>
                 <field name="unit_id"/>
@@ -16,7 +16,7 @@
                 <field name="assigned_to"/>
                 <field name="state" widget="badge" decoration-success="state=='completed'" decoration-info="state=='in_progress'" decoration-warning="state=='assigned'" decoration-muted="state=='submitted'"/>
                 <field name="created_date"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -71,7 +71,7 @@
     <record id="poi_maintenance_request_action" model="ir.actions.act_window">
         <field name="name">Maintenance Requests</field>
         <field name="res_model">poi.maintenance.request</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new maintenance request

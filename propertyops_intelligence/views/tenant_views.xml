@@ -4,7 +4,7 @@
         <field name="name">poi.tenant.view.tree</field>
         <field name="model">poi.tenant</field>
         <field name="arch" type="xml">
-            <tree string="Tenants">
+            <list string="Tenants">
                 <field name="name"/>
                 <field name="company_name"/>
                 <field name="contact_phone"/>
@@ -13,7 +13,7 @@
                 <field name="tenant_since"/>
                 <field name="total_lease_count"/>
                 <field name="ai_churn_risk" widget="percentage" decoration-danger="ai_churn_risk &gt; 50"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -47,14 +47,14 @@
                     <notebook>
                         <page string="Leases">
                             <field name="lease_ids">
-                                <tree>
+                                <list>
                                     <field name="lease_number"/>
                                     <field name="property_id"/>
                                     <field name="unit_id"/>
                                     <field name="start_date"/>
                                     <field name="end_date"/>
                                     <field name="status" widget="badge"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
@@ -70,7 +70,7 @@
     <record id="poi_tenant_action" model="ir.actions.act_window">
         <field name="name">Tenants</field>
         <field name="res_model">poi.tenant</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new tenant

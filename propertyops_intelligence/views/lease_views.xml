@@ -4,7 +4,7 @@
         <field name="name">poi.lease.view.tree</field>
         <field name="model">poi.lease</field>
         <field name="arch" type="xml">
-            <tree string="Leases" decoration-success="status=='active'" decoration-danger="status=='terminated'" decoration-muted="status=='expired'">
+            <list string="Leases" decoration-success="status=='active'" decoration-danger="status=='terminated'" decoration-muted="status=='expired'">
                 <field name="lease_number"/>
                 <field name="name"/>
                 <field name="property_id"/>
@@ -16,7 +16,7 @@
                 <field name="rent_frequency"/>
                 <field name="status" widget="badge" decoration-success="status=='active'" decoration-info="status=='renewed'" decoration-danger="status=='terminated'" decoration-warning="status=='expired'" decoration-muted="status=='draft'"/>
                 <field name="ai_renewal_probability" widget="percentage" decoration-success="ai_renewal_probability &gt;= 70" decoration-danger="ai_renewal_probability &lt; 40"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -67,7 +67,7 @@
                         </page>
                         <page string="Rent Schedule">
                             <field name="rent_schedule_ids">
-                                <tree editable="bottom">
+                                <list editable="bottom">
                                     <field name="due_date"/>
                                     <field name="amount"/>
                                     <field name="cam_amount"/>
@@ -75,7 +75,7 @@
                                     <field name="paid_date"/>
                                     <field name="state" widget="badge"/>
                                     <field name="days_late"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
@@ -91,7 +91,7 @@
     <record id="poi_lease_action" model="ir.actions.act_window">
         <field name="name">Leases</field>
         <field name="res_model">poi.lease</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new lease

@@ -12,7 +12,7 @@ class PoiVendorCompliance(models.Model):
         string='Vendor',
         required=True,
         ondelete='restrict',
-        domain="[('supplier_rank', '>', 0)]",
+        domain="[('is_company', '=', True)]",
     )
     property_id = fields.Many2one(
         comodel_name='poi.property',

@@ -58,7 +58,7 @@ class PoiMaintenanceRequest(models.Model):
     assigned_to = fields.Many2one(
         comodel_name='res.partner',
         string='Assigned To',
-        domain="[('supplier_rank', '>', 0)]",
+        domain="[('is_company', '=', True)]",
     )
     state = fields.Selection(
         selection=[

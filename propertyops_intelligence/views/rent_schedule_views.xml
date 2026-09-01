@@ -4,7 +4,7 @@
         <field name="name">poi.rent.schedule.view.tree</field>
         <field name="model">poi.rent.schedule</field>
         <field name="arch" type="xml">
-            <tree string="Rent Schedule" decoration-success="state=='paid'" decoration-danger="state=='overdue'" decoration-warning="state=='partial'">
+            <list string="Rent Schedule" decoration-success="state=='paid'" decoration-danger="state=='overdue'" decoration-warning="state=='partial'">
                 <field name="name"/>
                 <field name="lease_id"/>
                 <field name="due_date"/>
@@ -14,7 +14,7 @@
                 <field name="paid_date"/>
                 <field name="state" widget="badge" decoration-success="state=='paid'" decoration-danger="state=='overdue'" decoration-warning="state=='partial'" decoration-info="state=='due'" decoration-muted="state=='scheduled'"/>
                 <field name="days_late" decoration-danger="days_late &gt; 0"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -52,7 +52,7 @@
     <record id="poi_rent_schedule_action" model="ir.actions.act_window">
         <field name="name">Rent Schedule</field>
         <field name="res_model">poi.rent.schedule</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a rent schedule entry
