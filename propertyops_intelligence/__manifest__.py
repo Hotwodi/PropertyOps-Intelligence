@@ -1,6 +1,7 @@
 {
     'name': 'PropertyOps Intelligence: Lease Administration, Tenant Portal & Portfolio Control',
     'version': '18.0.1.0.0',
+    'images': ['static/description/cover.png'],
     'summary': 'AI-powered lease administration, tenant portal, and portfolio control for commercial and residential property management.',
     'description': """
 PropertyOps Intelligence: Lease Administration, Tenant Portal & Portfolio Control
